@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taylor Shelp | Cybersecurity</title>
     
-    <!-- Security  -->
+    <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -14,6 +14,7 @@
     
     <!--  Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+    
     
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" crossorigin="anonymous">
     <style>
@@ -31,7 +32,7 @@
             cursor: crosshair;
         }
 
-        /*  Matrix Rain */
+        /* Enhanced Matrix Rain */
         #matrix-canvas {
             position: fixed;
             top: 0;
@@ -42,7 +43,7 @@
             opacity: 0.4;
         }
 
-        /*   overlay */
+        /* Scan lines  */
         body::before {
             content: '';
             position: fixed;
@@ -75,7 +76,7 @@
             padding: 20px;
         }
 
-        /* Loading screen */
+        /* Loading  */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -218,7 +219,7 @@
             letter-spacing: 3px;
         }
 
-        /* hover effects */
+        /*   hover effects */
         nav {
             display: flex;
             justify-content: center;
@@ -340,7 +341,7 @@
             color: #0f0;
         }
 
-        /* About section with typing effect simulation */
+        /* About  */
         .about-content {
             line-height: 2;
             font-size: 1.2em;
@@ -360,7 +361,7 @@
             animation: blink 1.5s infinite;
         }
 
-        /*   progress bars */
+        /* Skills   */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -435,7 +436,7 @@
             text-shadow: 0 0 10px #0f0;
         }
 
-        /*   timeline */
+        /* Experience   */
         .experience-item {
             border-left: 4px solid #0f0;
             padding-left: 30px;
@@ -504,7 +505,7 @@
             left: 0;
         }
 
-        /*   glowing cards */
+        /* Contact    */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -643,7 +644,7 @@
             <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-btn" style="text-decoration: none; display: inline-block;">VIEW RESUME</a>
         </nav>
 
-        <!-- About Section -->
+        <!-- About  -->
         <div id="about" class="section active">
             <h2>ABOUT ME</h2>
             <div class="about-content">
@@ -654,7 +655,7 @@
             </div>
         </div>
 
-        <!-- Skills Section -->
+        <!-- Skills  -->
         <div id="skills" class="section">
             <h2>DEFENSE SYSTEMS</h2>
             <div class="skills-grid">
@@ -691,7 +692,7 @@
             </div>
         </div>
 
-        <!-- Experience Section -->
+        <!-- Experience  -->
         <div id="experience" class="section">
             <h2>CASE FILES</h2>
             
@@ -718,7 +719,7 @@
             </div>
         </div>
 
-        <!-- Education Section -->
+        <!-- Education  -->
         <div id="education" class="section">
             <h2>CLEARANCE LEVEL</h2>
             <div class="experience-item">
@@ -748,25 +749,17 @@
             </ul>
         </div>
 
-        <!-- Contact  -->
+        <!-- contact  -->
         <div id="contact" class="section">
             <h2>SECURE CHANNEL</h2>
             <div class="contact-grid">
                 <div class="contact-item">
-                    <h3>EMAIL</h3>
-                    <a href="mailto:contact.tps@proton.me">contact.tps@proton.me</a>
-                </div>
-                <div class="contact-item">
-                    <h3>PHONE</h3>
-                    <a href="tel:313-888-7407">313-888-7407</a>
-                </div>
-                <div class="contact-item">
-                    <h3>LOCATION</h3>
-                    <p>Ferndale, MI, 48220</p>
-                </div>
-                <div class="contact-item">
                     <h3>GITHUB</h3>
-                    <a href="https://github.com/hexashadee" target="_blank">github.com/hexashadee</a>
+                    <a href="https://github.com/hexashadee" target="_blank" rel="noopener noreferrer">github.com/hexashadee</a>
+                </div>
+                <div class="contact-item">
+                    <h3>CONTACT INFO</h3>
+                    <p>Available upon request via resume</p>
                 </div>
             </div>
         </div>
@@ -777,7 +770,7 @@
     </div>
 
     <script>
-        //Rain Effect
+        //  rain effect
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -816,9 +809,9 @@
             canvas.height = window.innerHeight;
         });
 
-        //  input sanitization
+        // nput sanitization
         function showSection(sectionId) {
-            // prevent potential XSS
+            //section IDs to prevent potential XSS
             const allowedSections = ['about', 'skills', 'experience', 'education', 'contact'];
             
             if (!allowedSections.includes(sectionId)) {
@@ -839,7 +832,7 @@
             }
         }
 
-        // Cursor trail effect
+        //  trail effect
         document.addEventListener('mousemove', (e) => {
             if (Math.random() > 0.8) {
                 const trail = document.createElement('div');
