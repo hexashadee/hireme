@@ -12,10 +12,11 @@
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     
-    <!--  Security Policy -->
+    <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
     
-    
+    <!-- Fonts with Subresource Integrity would go here, but Google Fonts doesn't support SRI -->
+    <!-- Using fonts.googleapis.com which is a trusted CDN -->
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" crossorigin="anonymous">
     <style>
         * {
@@ -43,7 +44,7 @@
             opacity: 0.4;
         }
 
-        /* Scan lines  */
+        /* Scan lines overlay */
         body::before {
             content: '';
             position: fixed;
@@ -76,7 +77,7 @@
             padding: 20px;
         }
 
-        /* Loading  */
+        /* Loading screen */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -112,7 +113,7 @@
             51%, 100% { opacity: 0; }
         }
 
-        /*   dramatic entrance */
+        /* Header with dramatic entrance */
         header {
             text-align: center;
             padding: 80px 20px;
@@ -219,7 +220,7 @@
             letter-spacing: 3px;
         }
 
-        /*   hover effects */
+        /* Navigation with hover effects */
         nav {
             display: flex;
             justify-content: center;
@@ -281,7 +282,7 @@
             box-shadow: 0 0 30px #0f0;
         }
 
-        /*  terminal aesthetic */
+        /* Sections with terminal aesthetic */
         .section {
             display: none;
             background: rgba(0, 0, 0, 0.95);
@@ -341,7 +342,7 @@
             color: #0f0;
         }
 
-        /* About  */
+        /* About section with typing effect simulation */
         .about-content {
             line-height: 2;
             font-size: 1.2em;
@@ -361,7 +362,7 @@
             animation: blink 1.5s infinite;
         }
 
-        /* Skills   */
+        /* Skills with progress bars */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -436,7 +437,7 @@
             text-shadow: 0 0 10px #0f0;
         }
 
-        /* Experience   */
+        /* Experience with timeline */
         .experience-item {
             border-left: 4px solid #0f0;
             padding-left: 30px;
@@ -505,7 +506,7 @@
             left: 0;
         }
 
-        /* Contact    */
+        /* Contact with glowing cards */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -581,7 +582,7 @@
             letter-spacing: 3px;
         }
 
-        /*  cursor trail */
+        /* Custom cursor trail */
         .cursor-trail {
             position: fixed;
             width: 10px;
@@ -644,7 +645,7 @@
             <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-btn" style="text-decoration: none; display: inline-block;">VIEW RESUME</a>
         </nav>
 
-        <!-- About  -->
+        <!-- About Section -->
         <div id="about" class="section active">
             <h2>ABOUT ME</h2>
             <div class="about-content">
@@ -655,7 +656,7 @@
             </div>
         </div>
 
-        <!-- Skills  -->
+        <!-- Skills Section -->
         <div id="skills" class="section">
             <h2>DEFENSE SYSTEMS</h2>
             <div class="skills-grid">
@@ -692,7 +693,7 @@
             </div>
         </div>
 
-        <!-- Experience  -->
+        <!-- Experience Section -->
         <div id="experience" class="section">
             <h2>CASE FILES</h2>
             
@@ -719,7 +720,7 @@
             </div>
         </div>
 
-        <!-- Education  -->
+        <!-- Education Section -->
         <div id="education" class="section">
             <h2>CLEARANCE LEVEL</h2>
             <div class="experience-item">
@@ -749,7 +750,7 @@
             </ul>
         </div>
 
-        <!-- contact  -->
+        <!-- Contact Section -->
         <div id="contact" class="section">
             <h2>SECURE CHANNEL</h2>
             <div class="contact-grid">
@@ -770,14 +771,14 @@
     </div>
 
     <script>
-        //  rain effect
+        // Enhanced Matrix Rain Effect
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const chars = '01';
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
@@ -809,9 +810,9 @@
             canvas.height = window.innerHeight;
         });
 
-        // nput sanitization
+        // Navigation with input sanitization
         function showSection(sectionId) {
-            //section IDs to prevent potential XSS
+            // Whitelist allowed section IDs to prevent potential XSS
             const allowedSections = ['about', 'skills', 'experience', 'education', 'contact'];
             
             if (!allowedSections.includes(sectionId)) {
@@ -832,7 +833,7 @@
             }
         }
 
-        //  trail effect
+        // Cursor trail effect
         document.addEventListener('mousemove', (e) => {
             if (Math.random() > 0.8) {
                 const trail = document.createElement('div');
